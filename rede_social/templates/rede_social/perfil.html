@@ -85,19 +85,37 @@
           <small>desde tal ano</small>
         </div>
       </div>
-
-      <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <h6 class="border-bottom pb-2 mb-0">Postagens</h6>
-        {% for postagem in perfil.postagem_set.all %}
-        <div class="d-flex text-muted pt-3">
-          <p class="pb-3 mb-0 small lh-sm">
-            {{ postagem.conteudo }}
-          </p>
-        </div>
-        {% endfor %}
-      </div>
+        {% if perfil.postagem_set.all %}
+          {% for postagem in perfil.postagem_set.all %}
+          <div class="my-3 p-3 bg-body rounded shadow-sm">
+          <h6 class="border-bottom pb-2 mb-0">{{ perfil.nome }}</h6>
+            <div class="d-flex text-muted pt-3">
+              <p class="pb-3 mb-0 small lh-sm">
+                {{ postagem.conteudo }}
+              </p>
+            </div>
+          </div>
+              {% for comentario in postagem.comentario_set.all%}
+                <h6 class="border-bottom pb-2 mb-0">{{ comentario.pessoa }}</h6>
+                <div class="d-flex text-muted pt-3">
+                  <p class="pb-3 mb-0 small lh-sm">
+                    {{ comentario.conteudo }}
+                  </p>
+                </div>
+              {% endfor %}
+          {% endfor %}
+        {% else %}
+          <div class="my-3 p-3 bg-body rounded shadow-sm">
+          <h6 class="border-bottom pb-2 mb-0">Postagens</h6>
+            <div class="d-flex text-muted pt-3">
+              <p class="pb-3 mb-0 small lh-sm">
+                Ainda não existem postagens suas
+              </p>
+            </div>
+          </div>
+          {% endif %}
     </main>
-
+<!--Ainda será criado um template para satisfazer a aba de comentários, dentro da publicação e abaixo do conteúdo da mensagem.-->
     <script
       src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
