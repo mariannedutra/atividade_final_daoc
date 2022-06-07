@@ -19,7 +19,7 @@
       crossorigin="anonymous"
     />
     <!-- Favicons -->
-    <meta name="theme-color" content="#7952b3" />
+    <meta name="theme-color" content="#012D76" />
 
     <style>
       .bd-placeholder-img {
@@ -49,7 +49,7 @@
       aria-label="Main navigation"
     >
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">CEULP</a>
+        <a class="navbar-brand" href="#">BLOGZÃO DO CEULP</a>
         <button
           class="navbar-toggler p-0 border-0"
           type="button"
@@ -66,35 +66,29 @@
       </div>
     </nav>
 
-    <div class="nav-scroller bg-body shadow-sm">
-      <nav class="nav nav-underline" aria-label="Secondary navigation">
-        <a class="nav-link active" aria-current="page" href="#">Grupos</a>
-        <a class="nav-link" href="#">Grupo 1</a>
-        <a class="nav-link" href="#">Grupo 2</a>
-        <a class="nav-link" href="#">Grupo 3</a>
-        <a class="nav-link" href="#">Grupo 4</a>
-      </nav>
+    <div class="d-flex align-items-center p-2 my-2 shadow-sm">
+       <p class="pb-2 mb-0 medium lh-sm">Atividade Final de Daoc</p>
     </div>
 
     <main class="container">
       <div
-        class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm"
+        class="d-flex align-items-center p-3 my-3 text-white bg-dark rounded shadow-sm"
       >
         <div class="lh-1">
-          <h1 class="h6 mb-0 text-white lh-1">{{ perfil.nome }}</h1>
-          <small>desde tal ano</small>
+          <p class="pb-2 mb-0 medium lh-sm">Olá, bem vindo(a) ao meu blog, me chamo </p>
+          <h1 class="h4 mb-0 text-white lh-1">{{ perfil.nome }}</h1>
         </div>
       </div>
 
       <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <h6 class="border-bottom pb-2 mb-0">Postagens</h6>
+        <h6 class="border-bottom pb-4 mb-0">Postagens</h6>
         {% for postagem in perfil.postagem_set.all %}
-        <div class="d-flex text-muted pt-3">
-          <p class="pb-3 mb-0 small lh-sm">{{ postagem.conteudo }}</p>
+        <div class="d-flex pt-3">
+          <p class="pb-3 mb-0 big lh-sm">{{ postagem.conteudo }}</p>
         </div>
-        <div class="d-flex text-muted pt-3">
+        <div class="d-flex pt-4">
           {% for comentario in postagem.comentario_set.all %}
-          <p class="pb-3 mb-0 small lh-sm">{{ comentario }}</p>
+          <p class="pb-4 mb-0 small text-muted lh-sm"> {{ comentario.pessoa.nome }} comentou {{ comentario }}</p>
           {% endfor %}
         </div>
         {% endfor %}
