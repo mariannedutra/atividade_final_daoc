@@ -13,7 +13,7 @@ class Pessoa(models.Model):
         on_delete=models.CASCADE, 
         verbose_name='Usuário')
     
-    amigos = models.ManyToManyField('Pessoa')
+    amigos = models.ManyToManyField('Pessoa', blank=True)
 
     def __str__(self):
         return self.nome
